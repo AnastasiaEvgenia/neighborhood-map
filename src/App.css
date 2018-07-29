@@ -1,28 +1,70 @@
+html,
+body {
+  width: 100%;
+}
+
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.app_header {
+  display: grid;
+  grid-template-columns: 0.1fr 0.9fr;
+  grid-template-rows: 1fr;
+  place-items: center;
+  background-color: rgba(38,38,38, 1);
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.title {
+  color: rgba(145,184,221,1);
+  text-shadow: 1px 1px 1px rgba(128,128,128,1);
 }
 
-.App-title {
-  font-size: 1.5em;
+.menu_icon {
+
 }
 
-.App-intro {
-  font-size: large;
+.app_main {
+  display: grid;
+  grid-template-columns: 0.4fr 0.6fr;
+  grid-template-rows: 1fr;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.nav_menu {
+
 }
+
+.filter_form {
+  display: flex;
+  flex-direction: row;
+}
+
+.locations_list {
+}
+
+.map_container {
+}
+
+
+/* ---------------- Footer ---------------- */
+.app_footer {
+  background-color:rgba(38,38,38, 1);
+  color: rgba(145,184,221,1);
+  /*  */
+}
+
+.app_footer a {
+ color: rgba(145,184,221,1);
+ font-style: italic;
+ text-decoration: none;
+}
+
+.app_footer a:hover{
+  text-decoration: underline;
+  color: rgba(255,175,75,1);
+}
+
+
+
