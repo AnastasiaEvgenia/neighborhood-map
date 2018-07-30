@@ -142,4 +142,14 @@ body {
   .map_container {
     grid-column: 1 / span 2;
   }
+
+  .app_main {
+    grid-template-columns: 1fr 3fr;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .app_main {
+    grid-template-columns: 1fr 4fr;
+  }
 }
