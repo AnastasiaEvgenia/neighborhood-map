@@ -126,4 +126,20 @@ body {
     padding: 10px 0;
     font-size: 1.3em;
   }
+
+  .nav_menu.hidden {
+    display: block;
+  }
+
+  .map_container.extend {
+    grid-column: 2;
+  }
+
+  .nav_menu {
+    display: none;
+  }
+
+  .map_container {
+    grid-column: 1 / span 2;
+  }
 }
