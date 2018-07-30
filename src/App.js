@@ -13,6 +13,27 @@ class App extends Component {
       navigation.classList.toggle("hidden");
       mapContainer.classList.toggle("extend");
     });
+
+    //event lister for changes in viewport
+    window.addEventListener('resize', () => {
+      this.displayMenu();
+    });
+  }
+
+
+  //method to display menu
+  displayMenu = () => {
+    if (window.screen.width < 560) {
+      const navigation = document.querySelector(".nav_menu");
+      const mapContainer = document.querySelector("#map");
+      navigation.classList.add("hidden");
+      mapContainer.classList.add("extend");
+    } else {
+      const navigation = document.querySelector(".nav_menu");
+      const mapContainer = document.querySelector("#map");
+      navigation.classList.remove("hidden");
+      mapContainer.classList.remove("extend");
+    }
   }
 
 
@@ -28,7 +49,7 @@ class App extends Component {
         </header>
 
         <main className="app_main">
-          <nav className="nav_menu hidden">
+          <nav className="nav_menu">
             <form>
               <div className="filter_form">
                 <input list="categories" type="text" placeholder="Filter locations.." aria-label="Filter through locations"/>
@@ -48,7 +69,7 @@ class App extends Component {
               <li>Basilopoulos</li>    
             </ul>
           </nav>
-          <div id="map" className="map_container extend">
+          <div id="map" className="map_container">
             <MapContainer />
           </div>
         </main>

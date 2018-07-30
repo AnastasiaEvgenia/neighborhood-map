@@ -106,7 +106,7 @@ body {
 }
 
 /* -----------Media Queries for various viewports----------------- */
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 560px) {
   .filter_form input {
     font-size: 0.9em;
   }
@@ -114,23 +114,6 @@ body {
   .locations_list li {
     font-size: 1em;
   }
-
-  .nav_menu.hidden {
-    display: block;
-  }
-
-  .map_container.extend {
-    grid-column: 2;
-  }
-
-  .nav_menu {
-    display: none;
-  }
-
-  .map_container {
-    grid-column: 1 / span 2;
-  }
-
 }
 
 @media screen and (min-width: 1000px) {
