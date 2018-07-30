@@ -81,7 +81,6 @@ body {
 
 .map_container {
   height: 100%;
-  background-color: red;
 }
 
 .map_container.extend {
@@ -115,17 +114,6 @@ body {
   .locations_list li {
     font-size: 1em;
   }
-}
-
-@media screen and (min-width: 1000px) {
-  .filter_form input {
-    font-size: 1.1em;
-  }
-
-  .locations_list li {
-    padding: 10px 0;
-    font-size: 1.3em;
-  }
 
   .nav_menu.hidden {
     display: block;
@@ -141,6 +129,18 @@ body {
 
   .map_container {
     grid-column: 1 / span 2;
+  }
+
+}
+
+@media screen and (min-width: 1000px) {
+  .filter_form input {
+    font-size: 1.1em;
+  }
+
+  .locations_list li {
+    padding: 10px 0;
+    font-size: 1.3em;
   }
 
   .app_main {

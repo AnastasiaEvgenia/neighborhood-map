@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import MapContainer from './MapContainer.js';
 
 class App extends Component {
 
@@ -47,7 +48,9 @@ class App extends Component {
               <li>Basilopoulos</li>    
             </ul>
           </nav>
-          <div id="map" className="map_container extend"></div>
+          <div id="map" className="map_container extend">
+            <MapContainer />
+          </div>
         </main>
 
         <footer className="app_footer">
