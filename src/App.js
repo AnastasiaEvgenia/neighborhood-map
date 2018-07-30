@@ -2,23 +2,41 @@ import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
+
+  //add event listener to toggle menu 
+  componentDidMount() {
+    const menuButton = document.querySelector(".menu_icon");
+    menuButton.addEventListener('click', () => {
+      const navigation = document.querySelector(".nav_menu");
+      const mapContainer = document.querySelector("#map");
+      navigation.classList.toggle("hidden");
+      mapContainer.classList.toggle("extend");
+    });
+  }
+
+
   render() {
     return (
       <div className="App">
 
         <header className="app_header">
-          <a href="#nav_menu">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACQSURBVGhD7ZaxCYBAEASvOk2sxCKMBAUrMLMGe1AwNxLE0NQKVB4/MPj4j9MZmHw3uGMFAAAgqcYircfWki6zjy+SNdOSd/NV9qsJXVaX2cd/CnTDfm3HaUKXlQKafrOA6SM2/0YB/g5bKLJsIW0poG2wAFsosmwhgBdsociyhbSlgLbBAmyhyLKFAABAROQG88ei5Eh4TwUAAAAASUVORK5CYII=" />
-          </a>
+          <button className="menu_icon">
+            <img alt="Hamburger menu button" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACQSURBVGhD7ZaxCYBAEASvOk2sxCKMBAUrMLMGe1AwNxLE0NQKVB4/MPj4j9MZmHw3uGMFAAAgqcYircfWki6zjy+SNdOSd/NV9qsJXVaX2cd/CnTDfm3HaUKXlQKafrOA6SM2/0YB/g5bKLJsIW0poG2wAFsosmwhgBdsociyhbSlgLbBAmyhyLKFAABAROQG88ei5Eh4TwUAAAAASUVORK5CYII=" />
+          </button>
           <h1 className="title">Patra City Neighborhood Map App</h1>
         </header>
 
         <main className="app_main">
-          <nav id="nav_menu">
+          <nav className="nav_menu hidden">
             <form>
-              <div  className="filter_form">
-                <input type="search" name="q" placeholder="Filter locations.." aria-label="Filter through locations"/>
-                <button>Search</button>
+              <div className="filter_form">
+                <input list="categories" type="text" placeholder="Filter locations.." aria-label="Filter through locations"/>
+                <datalist id="categories">
+                  <option value="Cafe"/>
+                  <option value="Theater"/>
+                  <option value="Restaurant"/>
+                  <option value="Super Market"/>
+                </datalist>
               </div>
             </form>
             <ul className="locations_list">
@@ -29,7 +47,7 @@ class App extends Component {
               <li>Basilopoulos</li>    
             </ul>
           </nav>
-          <div id="map" className="map_container"></div>
+          <div id="map" className="map_container extend"></div>
         </main>
 
         <footer className="app_footer">
