@@ -44,6 +44,12 @@ body {
   background-image: url("images/menu.jpg"); /*Image from https://www.pinterest.com/labminh/menu-background/*/
 }
 
+
+
+.nav_menu ul {
+  overflow-y: scroll;
+ }
+
 .nav_menu.hidden {
   display: none;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import locationData from './data.js';
 import Header from './Header.js';
 import LocationsFilter from './LocationsFilter.js'
 import LocationsList from './LocationsList.js'

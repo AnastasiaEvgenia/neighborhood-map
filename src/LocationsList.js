@@ -6,11 +6,9 @@ class LocationsList extends React.Component {
 	render() {
 		return(
 			<ul className="locations_list">
-              <li>Coffee Island</li>
-              <li>Masasouras</li>
-              <li>Gonia tou Mpampi</li>
-              <li>Arxaio Odeio</li>
-              <li>Basilopoulos</li>    
+				{locationData.map( (place) => {
+					return <li key={place.id}>{place.name}</li>
+				})} 
             </ul>
 		)
 	}
