@@ -9,7 +9,8 @@ export class MapContainer extends Component {
 				lng: 21.734574
 			},
 
-			zoom: 13
+			zoom: 13,
+			mapTypeControl: true
 		});
 	}
 
