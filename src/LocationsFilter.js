@@ -2,6 +2,14 @@ import React from 'react';
 
 class LocationsFilter extends React.Component {
 
+	componentDidMount() {
+		const selection = document.querySelector('#categories');
+		selection.addEventListener("click", function(evt) {
+			this.props.filterLocationsOnCategories(evt.target.value);
+			evt.stopPropagation();
+		}, false);
+	}
+
 	render() {
 		return(
 			<form>

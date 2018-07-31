@@ -8,6 +8,22 @@ import MapContainer from './MapContainer.js';
 import Footer from './Footer.js'
 
 class App extends Component {
+  state = {
+    locationsDisplayed: []
+  }
+
+  componentDidMount() {
+    this.setState({
+      locationsDisplayed: locationData
+    });
+  }
+
+  filterLocationsOnCategories = (catVal) => {
+    this.setState( (prevState) => {
+      const newLocDisplayed = prevState.filter( (place) => (place.category === catVal));
+      return {locationsDisplayed: newLocDisplayed}
+    });
+  }
 
   render() {
     return (
@@ -17,8 +33,8 @@ class App extends Component {
 
         <main className="app_main">
           <nav className="nav_menu">
-            <LocationsFilter />
-            <LocationsList />
+            <LocationsFilter filterLocationsOnCategories={this.filterLocationsOnCategories}/>
+            <LocationsList  locationsDisplayed={this.state.locationsDisplayed}/>
           </nav>
           <div id="map" className="map_container">
             <MapContainer />
