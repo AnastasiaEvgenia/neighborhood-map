@@ -9,7 +9,8 @@ import Footer from './Footer.js'
 
 class App extends Component {
   state = {
-    query: ''
+    query: '',
+    mapCenter: {lat: 38.24664, lng: 21.734574}
   }
 
   componentDidMount() {
@@ -17,7 +18,7 @@ class App extends Component {
     this.mapContainer = document.querySelector("#map");
     this.displayMenu();
 
-    //event lister for changes in viewport
+    //event listener for changes in viewport
     window.addEventListener('resize', () => {
       this.displayMenu();
     });
@@ -61,7 +62,7 @@ class App extends Component {
             <LocationsList  locationsDisplayed={locationData} query={this.state.query}/>
           </nav>
           <div id="map" className="map_container">
-            <MapContainer />
+            <MapContainer mapCenter={this.state.mapCenter} allLocations={locationData}/>
           </div>
         </main>
 
