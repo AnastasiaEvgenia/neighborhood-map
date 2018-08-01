@@ -44,12 +44,6 @@ body {
   background-image: url("images/menu.jpg"); /*Image from https://www.pinterest.com/labminh/menu-background/*/
 }
 
-
-
-.nav_menu ul {
-  overflow-y: scroll;
- }
-
 .nav_menu.hidden {
   display: none;
 }
@@ -69,6 +63,8 @@ body {
   list-style: none;
   padding-left: 0;
   margin: 0;
+  height: 75vh;
+  overflow-y: scroll;
 }
 
 .locations_list li {

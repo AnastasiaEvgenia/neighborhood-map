@@ -5,33 +5,7 @@ class Header extends React.Component {
 	//add event listener to toggle menu 
   componentDidMount() {
     const menuButton = document.querySelector(".menu_icon");
-    menuButton.addEventListener('click', () => {
-      const navigation = document.querySelector(".nav_menu");
-      const mapContainer = document.querySelector("#map");
-      navigation.classList.toggle("hidden");
-      mapContainer.classList.toggle("extend");
-    });
-
-    //event lister for changes in viewport
-    window.addEventListener('resize', () => {
-      this.displayMenu();
-    });
-  }
-
-
-  //method to display menu
-  displayMenu = () => {
-    if (window.screen.width < 560) {
-      const navigation = document.querySelector(".nav_menu");
-      const mapContainer = document.querySelector("#map");
-      navigation.classList.add("hidden");
-      mapContainer.classList.add("extend");
-    } else {
-      const navigation = document.querySelector(".nav_menu");
-      const mapContainer = document.querySelector("#map");
-      navigation.classList.remove("hidden");
-      mapContainer.classList.remove("extend");
-    }
+    menuButton.addEventListener('click', this.props.toggleMenu);    
   }
 
   render() {
