@@ -1,12 +1,13 @@
 import React from 'react';
-import locationData from './data.js';
 
 class LocationsList extends React.Component {
 
 	render() {
 		return(
 			<ul className="locations_list">
-				{this.props.locationsDisplayed.map( (place) => {
+				{this.props.locationsDisplayed.filter((place) => 
+                    this.props.query === '' || place.category === this.props.query || place.name.match(new RegExp(this.props.query, 'gi'))
+                ).map( (place) => {
 					return <li key={place.id}>{place.name}</li>
 				})} 
             </ul>

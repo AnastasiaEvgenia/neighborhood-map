@@ -9,28 +9,19 @@ import Footer from './Footer.js'
 
 class App extends Component {
   state = {
-    locationsDisplayed: []
+    query: ''
   }
 
   componentDidMount() {
-    this.setState({
-      locationsDisplayed: locationData
-    });
-
     this.navigation = document.querySelector(".nav_menu");
     this.mapContainer = document.querySelector("#map");
+    this.displayMenu();
 
     //event lister for changes in viewport
     window.addEventListener('resize', () => {
       this.displayMenu();
     });
   }
-
-  toggleMenu = () => {
-    this.navigation.classList.toggle("hidden");
-    this.mapContainer.classList.toggle("extend");
-  }
-
 
   //method to display menu
   displayMenu = () => {
@@ -47,11 +38,15 @@ class App extends Component {
     }
   }
 
-  filterLocationsOnCategories = (catVal) => {
-    this.setState( (prevState) => {
-      const newLocDisplayed = prevState.filter( (place) => (place.category === catVal));
-      return {locationsDisplayed: newLocDisplayed}
-    });
+  //method to toggle menu passed into <Header/> component
+  toggleMenu = () => {
+    this.navigation.classList.toggle("hidden");
+    this.mapContainer.classList.toggle("extend");
+  }
+
+  //method to filter user input passed into <LocationFilter> component
+  filterLocationsOnUserInput = (query) => {
+    this.setState({query: query});
   }
 
   render() {
@@ -62,8 +57,8 @@ class App extends Component {
 
         <main className="app_main">
           <nav className="nav_menu">
-            <LocationsFilter filterLocationsOnCategories={this.filterLocationsOnCategories}/>
-            <LocationsList  locationsDisplayed={this.state.locationsDisplayed}/>
+            <LocationsFilter filterLocationsOnUserInput={this.filterLocationsOnUserInput} query={this.state.query}/>
+            <LocationsList  locationsDisplayed={locationData} query={this.state.query}/>
           </nav>
           <div id="map" className="map_container">
             <MapContainer />
