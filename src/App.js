@@ -27,15 +27,11 @@ class App extends Component {
   //method to display menu
   displayMenu = () => {
     if (window.screen.width < 560) {
-      const navigation = document.querySelector(".nav_menu");
-      const mapContainer = document.querySelector("#map");
-      navigation.classList.add("hidden");
-      mapContainer.classList.add("extend");
+      this.navigation.classList.add("hidden");
+      this.mapContainer.classList.add("extend");
     } else {
-      const navigation = document.querySelector(".nav_menu");
-      const mapContainer = document.querySelector("#map");
-      navigation.classList.remove("hidden");
-      mapContainer.classList.remove("extend");
+      this.navigation.classList.remove("hidden");
+      this.mapContainer.classList.remove("extend");
     }
   }
 

@@ -5,6 +5,7 @@ export class MapContainer extends Component {
 
 	markers = [];
 	bounds = new this.props.google.maps.LatLngBounds();
+	largeInfowindow = new this.props.google.maps.InfoWindow();
 
 	componentDidMount() {
 		this.map = new this.props.google.maps.Map(document.getElementById('map'), {
@@ -18,7 +19,7 @@ export class MapContainer extends Component {
 
 	//method to create markers array
 	createMarkers = () => {
-		this.props.allLocations.map( (place) => {
+		this.props.allLocations.forEach( (place) => {
 			const marker = new this.props.google.maps.Marker({
 				position: place.location,
 				title: place.name,
@@ -26,12 +27,13 @@ export class MapContainer extends Component {
 				animation: this.props.google.maps.Animation.DROP
 			})
 
-			// //event listener to add infowindow when marker is clicked
-			// marker.addEventListener('click', () => {
-			// 	addInfowindow();
-			// });
+			this.markers.push(marker);
 
-			return this.markers.push(marker);
+			const self = this;
+			//event listener to add infowindow when marker is clicked
+			marker.addListener('click', function() {
+				self.addInfowindow(this, self.largeInfowindow);
+			});
 		});
 		this.addMarkers();
 	}
@@ -46,6 +48,17 @@ export class MapContainer extends Component {
 		this.map.fitBounds(this.bounds);
 	}
 
+	//method to add infowindow on markers
+	addInfowindow = (marker, infowindow) => {
+
+		if(infowindow.marker !== marker) {
+			infowindow.marker = marker;
+			infowindow.setContent(`<div> ${marker.title} </div>`);
+			infowindow.open(this.map, marker);
+			//make sure marker property is cleared if indfowindow is closed
+		}
+
+	}
 
 	render() {
 		return null;
