@@ -9,13 +9,14 @@ export class MapContainer extends Component {
 
 	componentDidMount() {
 		this.map = new this.props.google.maps.Map(document.getElementById('map'), {
-			center: this.props.mapCenter,
+			center: {lat: 38.24664, lng: 21.734574},
 			zoom: 13,
 			mapTypeControl: true
 		});
 
 		this.createMarkers();
 	}
+
 
 	//method to create markers array
 	createMarkers = () => {
@@ -33,6 +34,7 @@ export class MapContainer extends Component {
 			//event listener to add infowindow when marker is clicked
 			marker.addListener('click', function() {
 				self.addInfowindow(this, self.largeInfowindow);
+				self.props.placeClicked(this.id);
 			});
 		});
 		this.addMarkers();
@@ -55,9 +57,7 @@ export class MapContainer extends Component {
 			infowindow.marker = marker;
 			infowindow.setContent(`<div> ${marker.title} </div>`);
 			infowindow.open(this.map, marker);
-			//make sure marker property is cleared if indfowindow is closed
 		}
-
 	}
 
 	render() {

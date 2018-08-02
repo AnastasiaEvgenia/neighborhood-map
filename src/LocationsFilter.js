@@ -13,7 +13,7 @@ class LocationsFilter extends React.Component {
 		return(
 			<form>
               <div className="filter_form">
-                <input list="categories" type="text" value={this.props.query} placeholder="Filter locations.." aria-label="Filter through locations"/>
+                <input list="categories" type="search" value={this.props.query} placeholder="Filter locations.." aria-label="Filter through locations"/>
                 <datalist id="categories">
                   <option value="Cafe"/>
                   <option value="Candy Store"/>

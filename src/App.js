@@ -10,7 +10,7 @@ import Footer from './Footer.js'
 class App extends Component {
   state = {
     query: '',
-    mapCenter: {lat: 38.24664, lng: 21.734574}
+    selectedLocationId: ''
   }
 
   componentDidMount() {
@@ -46,6 +46,11 @@ class App extends Component {
     this.setState({query: query});
   }
 
+  //method to update selected place's id in state
+  placeClicked = (id) => {
+    this.setState({selectedLocationId: id});
+  }
+
   render() {
     return (
       <div className="App">
@@ -55,10 +60,10 @@ class App extends Component {
         <main className="app_main">
           <nav className="nav_menu">
             <LocationsFilter filterLocationsOnUserInput={this.filterLocationsOnUserInput} query={this.state.query}/>
-            <LocationsList  locationsDisplayed={locationData} query={this.state.query}/>
+            <LocationsList  locationsDisplayed={locationData} query={this.state.query} placeClicked={this.placeClicked}/>
           </nav>
           <div id="map" className="map_container">
-            <MapContainer mapCenter={this.state.mapCenter} allLocations={locationData}/>
+            <MapContainer allLocations={locationData} placeClicked={this.placeClicked}/>
           </div>
         </main>
 
