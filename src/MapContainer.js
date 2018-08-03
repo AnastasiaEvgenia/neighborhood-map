@@ -75,22 +75,27 @@ export class MapContainer extends Component {
 	addInfowindow = (marker, infowindow) => {
 
 			infowindow.marker = marker;
-			let innerHtml = `<div class="place_title"> 
-								<p>${marker.title} </p> 
-							</div>`;
+			let innerHtml = '';
 			fetch(marker.url)
 			.then( (response) => response.json())
 			.then( (apiResponse) => {
 				console.log(apiResponse);
-				let image = apiResponse.response.venue.bestPhoto;
-				innerHtml += `<div class="place_img">
-								<img alt="Shop photograph"
-									 src="${image.prefix + 'cap100' + image.suffix}"
+				let info = apiResponse.response.venue;
+				innerHtml += `<div class="info_container"> 
+								<p class="shop_title">
+									<a href="${info.shortUrl}">${info.name}</a>
+							    </p>
+								<img class="shop_image"
+									 alt="Shop photograph"
+									 src="${info.bestPhoto.prefix + 'cap100' + info.bestPhoto.suffix}"
 								>
+								<p class="shop_address">${info.location.address}</p>
 							  </div>`
-			})
+
 			infowindow.setContent(innerHtml);
 			infowindow.open(this.map, marker);
+			})
+
 		
 	}
 
