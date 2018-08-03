@@ -60,10 +60,10 @@ class App extends Component {
         <main className="app_main">
           <nav className="nav_menu">
             <LocationsFilter filterLocationsOnUserInput={this.filterLocationsOnUserInput} query={this.state.query}/>
-            <LocationsList  locationsDisplayed={locationData} query={this.state.query} placeClicked={this.placeClicked}/>
+            <LocationsList  locationsDisplayed={locationData} query={this.state.query} placeClicked={this.placeClicked} selectedLocationId={this.state.selectedLocationId}/>
           </nav>
           <div id="map" className="map_container">
-            <MapContainer allLocations={locationData} placeClicked={this.placeClicked}/>
+            <MapContainer allLocations={locationData} placeClicked={this.placeClicked} selectedLocationId={this.state.selectedLocationId} query={this.state.query}/>
           </div>
         </main>
 

@@ -17,6 +17,13 @@ export class MapContainer extends Component {
 		this.createMarkers();
 	}
 
+	componentDidUpdate(prevProps, prevState) {
+		console.log(prevProps.query + this.props.query);
+		if (prevProps.query !== this.props.query ) {
+			this.filterMarkersArray();
+		}
+	}
+
 
 	//method to create markers array
 	createMarkers = () => {
@@ -25,6 +32,7 @@ export class MapContainer extends Component {
 				position: place.location,
 				title: place.name,
 				id: place.id,
+				category: place.category,
 				animation: this.props.google.maps.Animation.DROP
 			})
 
@@ -50,6 +58,19 @@ export class MapContainer extends Component {
 		this.map.fitBounds(this.bounds);
 	}
 
+	//method to filter markers array and returns only the ones matching user query
+	filterMarkersArray = () => {
+		this.markers.forEach( (marker) => {
+			const query = this.props.query;
+			console.log(query);
+			if (query === '' || query === marker.category || marker.title.match(new RegExp(query, 'gi'))) {
+				marker.setMap(this.map);
+			} else {
+				marker.setMap(null);
+			}
+		});
+	}
+
 	//method to add infowindow on markers
 	addInfowindow = (marker, infowindow) => {
 
@@ -59,6 +80,8 @@ export class MapContainer extends Component {
 			infowindow.open(this.map, marker);
 		}
 	}
+
+
 
 	render() {
 		return null;
