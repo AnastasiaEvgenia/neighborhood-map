@@ -35,15 +35,15 @@ export class MapContainer extends Component {
 				title: place.name,
 				id: place.id,
 				category: place.category,
+				url: place.url,
 				animation: this.props.google.maps.Animation.DROP
 			})
 
 			this.markers.push(marker);
 
-			const self = this;
 			//take id of clicked marker
-			marker.addListener('click', function() {
-				self.props.placeClicked(this.id);
+			marker.addListener('click', () => {
+				this.props.placeClicked(place.id);
 			});
 		});
 		this.addMarkers();
@@ -63,7 +63,6 @@ export class MapContainer extends Component {
 	filterMarkersArray = () => {
 		this.markers.forEach( (marker) => {
 			const query = this.props.query;
-			console.log(query);
 			if (query === '' || query === marker.category || marker.title.match(new RegExp(query, 'gi'))) {
 				marker.setMap(this.map);
 			} else {
@@ -75,14 +74,25 @@ export class MapContainer extends Component {
 	//method to add infowindow on markers
 	addInfowindow = (marker, infowindow) => {
 
-		if(infowindow.marker !== marker) {
 			infowindow.marker = marker;
-			infowindow.setContent(`<div> ${marker.title} </div>`);
+			let innerHtml = `<div class="place_title"> 
+								<p>${marker.title} </p> 
+							</div>`;
+			fetch(marker.url)
+			.then( (response) => response.json())
+			.then( (apiResponse) => {
+				console.log(apiResponse);
+				let image = apiResponse.response.venue.bestPhoto;
+				innerHtml += `<div class="place_img">
+								<img alt="Shop photograph"
+									 src="${image.prefix + 'cap100' + image.suffix}"
+								>
+							  </div>`
+			})
+			infowindow.setContent(innerHtml);
 			infowindow.open(this.map, marker);
-		}
+		
 	}
-
-
 
 	render() {
 		return null;
