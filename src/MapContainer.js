@@ -18,9 +18,11 @@ export class MapContainer extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		console.log(prevProps.query + this.props.query);
 		if (prevProps.query !== this.props.query ) {
 			this.filterMarkersArray();
+		} else {
+			const currentMarker = this.markers.filter( (marker) => marker.id === this.props.selectedLocationId)[0];
+			this.addInfowindow(currentMarker, this.largeInfowindow);
 		}
 	}
 
@@ -39,9 +41,8 @@ export class MapContainer extends Component {
 			this.markers.push(marker);
 
 			const self = this;
-			//event listener to add infowindow when marker is clicked
+			//take id of clicked marker
 			marker.addListener('click', function() {
-				self.addInfowindow(this, self.largeInfowindow);
 				self.props.placeClicked(this.id);
 			});
 		});
