@@ -93,20 +93,21 @@ export class MapContainer extends Component {
 				let info = apiResponse.response.venue;
 				innerHtml = `<div class="info_container"> 
 								<p class="shop_title">
-									<a href="${info.shortUrl}" target="_blank">${info.name}</a>
+									<a href="${info.shortUrl}" target="_blank" aria-label="Visit shop homepage in Foursquare.">${info.name}</a>
 							    </p>
 								<img class="shop_image"
-									 alt="Shop photograph"
+									 tabIndex="0"
+									 alt="Photograph taken in ${info.name}."
 									 src="${info.bestPhoto.prefix + 'cap150' + info.bestPhoto.suffix}"
 								>
-								<p class="shop_address">${info.location.address}</p>
+								<p class="shop_address" tabIndex="0">${info.location.address}</p>
 							  </div>`
 
 			infowindow.setContent(innerHtml);
 			infowindow.open(this.map, marker);
 			})
 			.catch( (error) => {
-				innerHtml = `<div class="info_error">
+				innerHtml = `<div class="info_error" tabIndex="0">
 								<p>Error loading Foursquare API.</p>
 								<p>${error}.</p>
 								<p>Please check your internet connection.</p>

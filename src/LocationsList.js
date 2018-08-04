@@ -5,7 +5,12 @@ class LocationsList extends React.Component {
 	componentDidMount() {
 		document.querySelector('.locations_list').addEventListener('click', (evt) => {
 			this.props.placeClicked(evt.target.id);
-		})
+		});
+		document.querySelector('.locations_list').addEventListener('keyup', (evt) => {
+			if(evt.keyCode === 13) {
+				this.props.placeClicked(evt.target.id);
+			}
+		});
 	}
 
 	render() {
@@ -14,7 +19,7 @@ class LocationsList extends React.Component {
 				{this.props.locationsDisplayed.filter((place) => 
                     this.props.query === '' || place.category === this.props.query || place.name.match(new RegExp(this.props.query, 'gi'))
                 ).map( (place) => {
-					return <li key={place.id} id={place.id}>{place.name}</li>
+					return <li key={place.id} id={place.id} tabIndex="0">{place.name}</li>
 				})} 
             </ul>
 		)

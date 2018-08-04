@@ -58,7 +58,7 @@ class App extends Component {
             <LocationsList  locationsDisplayed={locationData} query={this.state.query} placeClicked={this.placeClicked} selectedLocationId={this.state.selectedLocationId}/>
           </nav>
           <div id="map" className="map_container">
-            <MapContainer allLocations={locationData} placeClicked={this.placeClicked} selectedLocationId={this.state.selectedLocationId} query={this.state.query}/>
+            <MapContainer role="application" tabIndex="0" aria-label="Neighborhood Map, by google maps." allLocations={locationData} placeClicked={this.placeClicked} selectedLocationId={this.state.selectedLocationId} query={this.state.query}/>
           </div>
         </main>
 
