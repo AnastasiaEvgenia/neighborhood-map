@@ -17,11 +17,6 @@ class App extends Component {
     this.navigation = document.querySelector(".nav_menu");
     this.mapContainer = document.querySelector("#map");
     this.displayMenu();
-
-    //event listener for changes in viewport
-    window.addEventListener('resize', () => {
-      this.displayMenu();
-    });
   }
 
   //method to display menu

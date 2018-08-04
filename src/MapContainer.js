@@ -79,15 +79,14 @@ export class MapContainer extends Component {
 			fetch(marker.url)
 			.then( (response) => response.json())
 			.then( (apiResponse) => {
-				console.log(apiResponse);
 				let info = apiResponse.response.venue;
-				innerHtml += `<div class="info_container"> 
+				innerHtml = `<div class="info_container"> 
 								<p class="shop_title">
-									<a href="${info.shortUrl}">${info.name}</a>
+									<a href="${info.shortUrl}" target="_blank">${info.name}</a>
 							    </p>
 								<img class="shop_image"
 									 alt="Shop photograph"
-									 src="${info.bestPhoto.prefix + 'cap100' + info.bestPhoto.suffix}"
+									 src="${info.bestPhoto.prefix + 'cap150' + info.bestPhoto.suffix}"
 								>
 								<p class="shop_address">${info.location.address}</p>
 							  </div>`
@@ -95,8 +94,14 @@ export class MapContainer extends Component {
 			infowindow.setContent(innerHtml);
 			infowindow.open(this.map, marker);
 			})
+			.catch( (error) => {
+				innerHtml = `<div class="info_error">
+								<p>Error loading fourSquare API. Refer to error ${error}.</p>
+							 </div>`
+				infowindow.setContent(innerHtml);
+				infowindow.open(this.map, marker);
+			});
 
-		
 	}
 
 	render() {
