@@ -8,13 +8,17 @@ export class MapContainer extends Component {
 	largeInfowindow = new this.props.google.maps.InfoWindow();
 
 	componentDidMount() {
-		this.map = new this.props.google.maps.Map(document.getElementById('map'), {
-			center: {lat: 38.24664, lng: 21.734574},
-			zoom: 13,
-			mapTypeControl: true
-		});
+		if (this.props.google) {
+			this.map = new this.props.google.maps.Map(document.getElementById('map'), {
+				center: {lat: 38.24664, lng: 21.734574},
+				zoom: 13,
+				mapTypeControl: true
+			});
+			this.createMarkers();
+		} else {
+			window.alert('Google Maps Api failed to load. Please check your iternet connection!');
+		}
 
-		this.createMarkers();
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -23,6 +27,10 @@ export class MapContainer extends Component {
 		} else {
 			const currentMarker = this.markers.filter( (marker) => marker.id === this.props.selectedLocationId)[0];
 			this.addInfowindow(currentMarker, this.largeInfowindow);
+		}
+
+		if(!this.props.google) {
+			window.alert('Google Maps Api failed to load. Please check your iternet connection!');
 		}
 	}
 
@@ -44,6 +52,7 @@ export class MapContainer extends Component {
 			//take id of clicked marker
 			marker.addListener('click', () => {
 				this.props.placeClicked(place.id);
+				this.map.zoom = 17;		
 			});
 		});
 		this.addMarkers();
@@ -73,9 +82,11 @@ export class MapContainer extends Component {
 
 	//method to add infowindow on markers
 	addInfowindow = (marker, infowindow) => {
-
+			this.bouncingMarker(marker);
 			infowindow.marker = marker;
+
 			let innerHtml = '';
+
 			fetch(marker.url)
 			.then( (response) => response.json())
 			.then( (apiResponse) => {
@@ -96,13 +107,23 @@ export class MapContainer extends Component {
 			})
 			.catch( (error) => {
 				innerHtml = `<div class="info_error">
-								<p>Error loading fourSquare API. Refer to error ${error}.</p>
+								<p>Error loading Foursquare API.</p>
+								<p>${error}.</p>
+								<p>Please check your internet connection.</p>
 							 </div>`
 				infowindow.setContent(innerHtml);
 				infowindow.open(this.map, marker);
 			});
 
 	}
+
+	bouncingMarker = (marker) => {
+		marker.setAnimation(this.props.google.maps.Animation.BOUNCE);
+        	setTimeout(() => {
+        		marker.setAnimation(null);
+        	},1200);
+	}
+
 
 	render() {
 		return null;
