@@ -4,7 +4,7 @@
 
 [This](https://anastasiaevgenia.github.io/neighborhood-map/) is a project 
 for the Udacity Front-End Web Developer Nanodegree program. The objective
-of the project is to develop a single page application using React.
+of the project is to develop a single page application using [React](https://reactjs.org/).
 
 ## App Description.
 
@@ -39,11 +39,14 @@ above the marker presented in the map.
 ## Dependencies
 
 This application is using the above npm packages:
-	1. [create-react-app](https://www.npmjs.com/package/create-react-app)
-	2. [google-maps-react](https://www.npmjs.com/package/google-maps-react)
-	3. [gh-pages](https://www.npmjs.com/package/gh-pages)
-	4. [webpack](https://www.npmjs.com/package/webpack)
-	5. [serve](https://www.npmjs.com/package/serve)
+	1. Create app with [create-react-app](https://www.npmjs.com/package/create-react-app).
+	2. Use Google Maps API with [google-maps-react](https://www.npmjs.com/package/google-maps-react).
+	3. Deploy build version and run it through Github pages with [gh-pages](https://www.npmjs.com/package/gh-pages).
+	4. Run localy build verion by installing a server using [webpack](https://www.npmjs.com/package/webpack) and 
+	   [serve](https://www.npmjs.com/package/serve).
+
+Application is also making use of the [Google Maps API](https://cloud.google.com/maps-platform/),
+[Foursquare API](https://developer.foursquare.com/) and [icons](https://icons8.com).
 
 _Special thanks to [Alexandris George](https://github.com/gfa61-ga) for tutoring
 and helping me throughout the course of this project._
