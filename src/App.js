@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import './App.css';
 import locationData from './data.js';
 import Header from './Header.js';
-import LocationsFilter from './LocationsFilter.js'
-import LocationsList from './LocationsList.js'
+import LocationsFilter from './LocationsFilter.js';
+import LocationsList from './LocationsList.js';
 import MapContainer from './MapContainer.js';
-import Footer from './Footer.js'
+import Footer from './Footer.js';
 
 class App extends Component {
+
   state = {
-    query: '',
-    selectedLocationId: ''
+    query: '', //Refers to user input in search field.
+    selectedLocationId: '' //Refers to special id number from Foursquare API.
   }
 
   componentDidMount() {
@@ -19,7 +20,13 @@ class App extends Component {
     this.displayMenu();
   }
 
-  //method to display menu
+  //Method that toggles menu view, passed into <Header/> component.
+  toggleMenu = () => {
+    this.navigation.classList.toggle("hidden");
+    this.mapContainer.classList.toggle("extend");
+  }
+
+  //Method to display menu view by default. Menu is closed when screen width is below 560px and open for bigger.
   displayMenu = () => {
     if (window.screen.width < 560) {
       this.navigation.classList.add("hidden");
@@ -30,40 +37,54 @@ class App extends Component {
     }
   }
 
-  //method to toggle menu passed into <Header/> component
-  toggleMenu = () => {
-    this.navigation.classList.toggle("hidden");
-    this.mapContainer.classList.toggle("extend");
-  }
-
-  //method to filter user input passed into <LocationFilter> component
+  //Method to filter user input and update state, passed into <LocationFilter> component.
   filterLocationsOnUserInput = (query) => {
-    this.setState({query: query});
+    this.setState({ query: query });
   }
 
-  //method to update selected place's id in state
+  //Method to update selected place's id in state, passed into <LocationsList/> and <MapContainer/> components.
   placeClicked = (id) => {
-    this.setState({selectedLocationId: id});
+    this.setState({ selectedLocationId: id });
   }
 
   render() {
     return (
       <div className="App">
-
         <Header toggleMenu={this.toggleMenu}/>
-
         <main className="app_main">
           <nav className="nav_menu">
-            <LocationsFilter filterLocationsOnUserInput={this.filterLocationsOnUserInput} query={this.state.query}/>
-            <LocationsList  locationsDisplayed={locationData} query={this.state.query} placeClicked={this.placeClicked} selectedLocationId={this.state.selectedLocationId}/>
+            <LocationsFilter 
+              filterLocationsOnUserInput={this.filterLocationsOnUserInput}
+              query={this.state.query}
+            />
+            <LocationsList  
+              locationsDisplayed={locationData}
+              query={this.state.query}
+              placeClicked={this.placeClicked}
+              selectedLocationId={this.state.selectedLocationId}
+            />
           </nav>
-          <div id="map" className="map_container">
-            <MapContainer role="application" tabIndex="0" aria-label="Neighborhood Map, by google maps." allLocations={locationData} placeClicked={this.placeClicked} selectedLocationId={this.state.selectedLocationId} query={this.state.query}/>
-          </div>
+          {
+            (navigator.onLine)
+            ?
+            <div id="map" className="map_container">
+              <MapContainer 
+                tabIndex="0"
+                role="application"
+                aria-label="Neighborhood Map, by google maps."
+                allLocations={locationData}
+                query={this.state.query}
+                placeClicked={this.placeClicked}
+                selectedLocationId={this.state.selectedLocationId}
+              />
+            </div>
+            :
+            <div id="map" style={{color: "red"}}>
+              <p>Google Maps Api failed to load. Please check your iternet connection!</p>
+            </div>
+          }
         </main>
-
         <Footer />
-
       </div>
     );
   }

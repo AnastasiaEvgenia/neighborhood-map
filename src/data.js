@@ -1,3 +1,5 @@
+//Initial data for all locations, taken from Fourthsquare API.
+
 const locationData = [
   	{
   		category: "Candy Store",
