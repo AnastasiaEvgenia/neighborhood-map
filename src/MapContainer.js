@@ -8,6 +8,7 @@ export class MapContainer extends Component {
 	largeInfowindow = new this.props.google.maps.InfoWindow();
 
 	componentDidMount() {
+		console.log(this.props.google);
 		if (this.props.google) {
 			this.map = new this.props.google.maps.Map(document.getElementById('map'), {
 				center: {lat: 38.24664, lng: 21.734574},

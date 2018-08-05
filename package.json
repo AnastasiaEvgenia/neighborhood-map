@@ -18,6 +18,8 @@
   },
   "homepage": "https://anastasiaevgenia.github.io/neighborhood-map",
   "devDependencies": {
-    "gh-pages": "^1.2.0"
+    "gh-pages": "^1.2.0",
+    "serve": "^9.4.0",
+    "webpack": "^3.11.0"
   }
 }
