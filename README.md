@@ -12,7 +12,7 @@ The application features a map of a neighborhood in Patra, Greece. User can
 choose from a number of locations of interest and display information about
 them. The locations are displayed in a list menu and can be filtered by using
 the search field or by choosing a category (cafe, candy store, restaurant, bar).
-Using the filter also filters the markers on the map and displays the ones matching
+Using the search input also filters the markers on the map and displays the ones matching
 the user input. Information for the choosen location is displayed on an infowindow
 above the marker presented in the map.
 
@@ -39,14 +39,14 @@ above the marker presented in the map.
 ## Dependencies
 
 This application is using the above npm packages:
-	* [create-react-app](https://www.npmjs.com/package/create-react-app)
-	* [google-maps-react](https://www.npmjs.com/package/google-maps-react)
-	* [gh-pages](https://www.npmjs.com/package/gh-pages)
-	* [webpack](https://www.npmjs.com/package/webpack)
-	* [serve](https://www.npmjs.com/package/serve)
+	1. [create-react-app](https://www.npmjs.com/package/create-react-app)
+	2. [google-maps-react](https://www.npmjs.com/package/google-maps-react)
+	3. [gh-pages](https://www.npmjs.com/package/gh-pages)
+	4. [webpack](https://www.npmjs.com/package/webpack)
+	5. [serve](https://www.npmjs.com/package/serve)
 
-_Special thanks to Alexandris George for tutoring and helping me throughout 
-the course of this project._
+_Special thanks to [Alexandris George](https://github.com/gfa61-ga) for tutoring
+and helping me throughout the course of this project._
 
 ## License
 
