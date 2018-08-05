@@ -6,7 +6,9 @@ class LocationsList extends React.Component {
 
 		//Event listeners for selecting list items (locations).
 		document.querySelector('.locations_list').addEventListener('click', (evt) => {
-			this.props.placeClicked(evt.target.id);
+			if(evt.target.id) {
+				this.props.placeClicked(evt.target.id);
+			}
 		});
 
 		document.querySelector('.locations_list').addEventListener('keyup', (evt) => {

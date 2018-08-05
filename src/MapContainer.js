@@ -116,6 +116,11 @@ export class MapContainer extends Component {
 	}
 }
 
+//Function to alert for error if Api key is not authenticated.
+window.gm_authFailure = () => {
+	window.alert('Google Maps API authentication error');
+}
+
 export default GoogleApiWrapper({
-	apiKey: 'AIzaSyD4DKxPZHi2vMPsEJ635o0WVPd8TjiwCfc'
+	apiKey: 'AIzaSyD4DKxPZHi2vMPsEJ635o0WVPd8TjiwCf'
 })(MapContainer);
