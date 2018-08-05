@@ -38,10 +38,14 @@ above the marker presented in the map.
 
 ## Dependencies
 
-This application is using the above npm packages:
+This application is using the npm packages below.
+
 	1. Create app with [create-react-app](https://www.npmjs.com/package/create-react-app).
+
 	2. Use Google Maps API with [google-maps-react](https://www.npmjs.com/package/google-maps-react).
+
 	3. Deploy build version and run it through Github pages with [gh-pages](https://www.npmjs.com/package/gh-pages).
+	
 	4. Run localy build verion by installing a server using [webpack](https://www.npmjs.com/package/webpack) and 
 	   [serve](https://www.npmjs.com/package/serve).
 
