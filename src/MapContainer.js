@@ -122,5 +122,5 @@ window.gm_authFailure = () => {
 }
 
 export default GoogleApiWrapper({
-	apiKey: 'AIzaSyD4DKxPZHi2vMPsEJ635o0WVPd8TjiwCf'
+	apiKey: 'AIzaSyD4DKxPZHi2vMPsEJ635o0WVPd8TjiwCfc'
 })(MapContainer);
