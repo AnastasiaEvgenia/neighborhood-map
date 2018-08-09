@@ -86,7 +86,8 @@ body {
 }
 
 
-.locations_list li:hover {
+.locations_list li:hover,
+.locations_list .selected {
   border-style: inset;
   font-weight: bold;
   background-color: rgba(82, 146, 183, 0.65);

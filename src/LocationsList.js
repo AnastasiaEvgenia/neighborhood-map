@@ -24,7 +24,7 @@ class LocationsList extends React.Component {
 				{this.props.locationsDisplayed.filter( (place) => 
                     this.props.query === '' || place.category === this.props.query || place.name.match(new RegExp(this.props.query, 'gi'))
                 ).map( (place) => {
-					return <li key={place.id} id={place.id} tabIndex="0">{place.name}</li>
+					return <li key={place.id} className={this.props.selectedLocationId===place.id ? 'selected' : ''} id={place.id} tabIndex="0">{place.name}</li>
 				})} 
             </ul>
 		)

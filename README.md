@@ -41,7 +41,6 @@ above the marker presented in the map.
 This application is using the npm packages below.
 
 1.  Create app with [create-react-app](https://www.npmjs.com/package/create-react-app).
-This application is using the npm packages below.
 
 2. Use Google Maps API with [google-maps-react](https://www.npmjs.com/package/google-maps-react).
 
@@ -52,7 +51,7 @@ This application is using the npm packages below.
 Application is also making use of the [Google Maps API](https://cloud.google.com/maps-platform/),
 [Foursquare API](https://developer.foursquare.com/) and [icons](https://icons8.com).
 
-_Special thanks to [Alexandris George](https://github.com/gfa61-ga) for tutoring
+_Special thanks to [Alexandris George](https://www.linkedin.com/in/george-alexandris-2018/) for tutoring
 and helping me throughout the course of this project._
 
 ## License

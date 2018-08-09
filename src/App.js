@@ -14,6 +14,10 @@ class App extends Component {
     selectedLocationId: '' //Refers to special id number from Foursquare API.
   }
 
+  componentWillMount() {
+    this.setState({online: navigator.onLine});
+  }
+
   componentDidMount() {
     this.navigation = document.querySelector(".nav_menu");
     this.mapContainer = document.querySelector("#map");
@@ -65,7 +69,7 @@ class App extends Component {
             />
           </nav>
           {
-            (navigator.onLine)
+            (this.state.onLine)
             ?
             <div id="map" className="map_container">
               <MapContainer 
