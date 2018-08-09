@@ -69,7 +69,7 @@ class App extends Component {
             />
           </nav>
           {
-            (this.state.onLine)
+            (this.state.online)
             ?
             <div id="map" className="map_container">
               <MapContainer 
